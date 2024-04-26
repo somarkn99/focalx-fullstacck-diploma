@@ -21,9 +21,10 @@ class AuthorController extends Controller
     public function store(Request $request)
     {
         $author = Author::create();
-        $author->books()->attach($request->book_id,['available' => false,
-                                                    'paid'=> false
-    ]);
+        $author->books()->attach($request->book_id,[
+            'available' => false,
+            'paid'=> false
+        ]);
         // $author->books()->detach($request->book_id);
         // $author->books()->sync($request->book_id);
     }
