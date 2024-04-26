@@ -23,7 +23,8 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        event(new UserCreatedAction($user));
+
+        // event(new UserCreatedAction($user));
 
         $token = Auth::login($user);
 
