@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,3 +18,6 @@ Route::apiResource('brand',BrandController::class);
 
 Route::get('users',[UserController::class,'index']);
 Route::post('users',[UserController::class,'store']);
+
+
+Route::post('send',[NewsLetterController::class,'send']);
