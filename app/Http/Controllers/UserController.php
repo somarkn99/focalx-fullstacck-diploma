@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $users = User::all();
         // foreach ($users as $key => $user) {
@@ -21,6 +21,7 @@ class UserController extends Controller
         //     'email' => $user->email,
         //     'full_name' => $user->full_name,
         // ]);
+        dd($request);
         return view('User',['users'=>$users]);
     }
 
