@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\SendNotification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
+    use SendNotification;
     public function index(Request $request)
     {
         $users = User::all();
@@ -21,7 +23,8 @@ class UserController extends Controller
         //     'email' => $user->email,
         //     'full_name' => $user->full_name,
         // ]);
-        dd($request);
+        $this->sendNotification('sdfsdfsdfsdfsdfs','test','test','Home');
+        // dd($request);
         return view('User',['users'=>$users]);
     }
 
