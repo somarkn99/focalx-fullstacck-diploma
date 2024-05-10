@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\NewsLetterController;
+use App\Http\Controllers\TableController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::apiResource('brand',BrandController::class);
+Route::apiResource('table',TableController::class);
 
 Route::get('users',[UserController::class,'index']);
 Route::post('users',[UserController::class,'store']);
