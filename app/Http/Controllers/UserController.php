@@ -11,16 +11,17 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        foreach ($users as $key => $user) {
-            Log::debug($user->full_name);
-        }
-        return response()->json([
-            'id' => $user->id,
-            'first_name' => $user->first_name,
-            'last_name' => $user->last_name,
-            'email' => $user->email,
-            'full_name' => $user->full_name,
-        ]);
+        // foreach ($users as $key => $user) {
+        //     Log::debug($user->full_name);
+        // }
+        // return response()->json([
+        //     'id' => $user->id,
+        //     'first_name' => $user->first_name,
+        //     'last_name' => $user->last_name,
+        //     'email' => $user->email,
+        //     'full_name' => $user->full_name,
+        // ]);
+        return view('User',['users'=>$users]);
     }
 
     public function store(Request $request)
