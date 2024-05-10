@@ -28,11 +28,14 @@ class ImageController extends Controller
         $mime_type = $file->getClientMimeType();
         $type = explode('/', $mime_type);
 
-        $path = Storage::disk('public')->put('images/'.$fileName.'.'.$type[1], $file, [
+        // Save the file and get the path within the storage disk
+        $storagePath = Storage::disk('public')->put('images', $file, [
             'visibility' => Visibility::PUBLIC
         ]);
 
-        $path = Storage::disk('public')->url($path);
-        return $path;
+        // Generate the URL to access the stored file
+        $url = Storage::disk('public')->url($storagePath);
+
+        return $url;  // You should return or use the URL as needed in your application
     }
 }
