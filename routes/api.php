@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\UserController;
@@ -23,3 +24,5 @@ Route::post('users',[UserController::class,'store']);
 
 
 Route::post('send',[NewsLetterController::class,'send']);
+
+Route::post('/upload', [ImageController::class,'store']);

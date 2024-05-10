@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use League\Flysystem\Visibility;
 
 class ImageController extends Controller
 {
@@ -27,7 +28,11 @@ class ImageController extends Controller
         $mime_type = $file->getClientMimeType();
         $type = explode('/', $mime_type);
 
-        $path = Storage::disk('public')->put('images',$file,$fileName.'.'.$type[1]);
+        $path = Storage::disk('public')->put('images/'.$fileName.'.'.$type[1], $file, [
+            'visibility' => Visibility::PUBLIC
+        ]);
+
         $path = Storage::disk('public')->url($path);
+        return $path;
     }
 }
