@@ -9,8 +9,10 @@ class Author extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function books()
     {
-        return $this->belongsToMany(Book::class)->withPivot(['available'])->using(AuthorBook::class);
+        return $this->belongsToMany(Book::class)->withPivot(['available', 'paid'])->using(AuthorBook::class);
     }
 }
