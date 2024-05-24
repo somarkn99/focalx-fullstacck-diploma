@@ -23,15 +23,15 @@ class AuthorController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'book_id' => 'required|array',
-            'book_id.*' => 'exists:books,id'
+            // 'book_id' => 'required|array',
+            // 'book_id.*' => 'exists:books,id'
         ]);
 
         $author = Author::create($request->only('name'));
-        $author->books()->attach($request->book_id, [
-            'available' => false,
-            'paid'=> false
-        ]);
+        // $author->books()->attach($request->book_id, [
+        //     'available' => false,
+        //     'paid'=> false
+        // ]);
 
         return response()->json($author, 201);
     }

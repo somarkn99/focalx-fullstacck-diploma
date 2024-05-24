@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\NewsLetterController;
@@ -26,3 +27,7 @@ Route::post('users',[UserController::class,'store']);
 Route::post('send',[NewsLetterController::class,'send']);
 
 Route::post('/upload', [ImageController::class,'store']);
+
+
+Route::get('authors',[AuthorController::class,'index']);
+Route::post('authors',[AuthorController::class,'store']);
